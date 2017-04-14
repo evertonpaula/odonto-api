@@ -34,7 +34,7 @@ class CountrySeeder extends Seeder {
 			[ 'Bosnia and Herzegovina', 'BA', 'BIH', '70', 'BAM', 'Marka', 'KM' ],
 			[ 'Botswana', 'BW', 'BWA', '72', 'BWP', 'Pula', 'P' ],
 			[ 'Bouvet Island', 'BV', 'BVT', '74', 'NOK', 'Krone', 'kr' ],
-			[ 'Brazil', 'BR', 'BRA', '76', 'BRL', 'Real', 'R$' ],
+			[ 'Brasil', 'BR', 'BRA', '76', 'BRL', 'Real', 'R$' ],
 			[ 'British Indian Ocean Territory', 'IO', 'IOT', '86', 'USD', 'Dollar', '$' ],
 			[ 'British Virgin Islands', 'VG', 'VGB', '92', 'USD', 'Dollar', '$' ],
 			[ 'Brunei', 'BN', 'BRN', '96', 'BND', 'Dollar', '$' ],
