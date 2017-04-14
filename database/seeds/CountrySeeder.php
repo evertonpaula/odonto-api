@@ -263,9 +263,9 @@ class CountrySeeder extends Seeder {
 			];
 		}
 
-		DB::connection('mysql')->statement('SET foreign_key_checks = 0');
-		DB::connection('mysql')->table('country')->truncate();
-		DB::connection('mysql')->table('country')->insert( $data_arr );
-		DB::connection('mysql')->statement('SET foreign_key_checks = 1');
+		DB::statement('SET foreign_key_checks = 0');
+		DB::table('country')->truncate();
+		DB::table('country')->insert( $data_arr );
+		DB::statement('SET foreign_key_checks = 1');
 	}
 }

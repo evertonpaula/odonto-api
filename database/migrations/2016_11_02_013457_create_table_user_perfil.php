@@ -15,24 +15,29 @@ class CreateTableUserPerfil extends Migration
     {
         Schema::create( 'user_perfil', function( $table ){
             $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('image_id')->unsigned()->nullable()->default(null);;
             $table->string('first_name');
             $table->string('last_name');
             $table->string('phone')->nullable()->default(null);
-            $table->string('address')->nullable()->default(null);
-            $table->string('city')->nullable()->default(null);
-            $table->string('zipcode')->nullable()->default(null);
-            $table->integer('country_id')->unsigned()->nullable()->default(null);
+            $table->bigInteger('address_id')->unsigned()->nullable()->default(null);;
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('country_id')
-                  ->references('id')->on('country')
-                  ->onDelete('CASCADE')
-                  ->onUpdate('CASCADE');
 
             $table->foreign('user_id')
                   ->references('id')
                   ->on('user')
+                  ->onDelete('CASCADE')
+                  ->onUpdate('CASCADE');
+
+            $table->foreign('image_id')
+                  ->references('id')
+                  ->on('image')
+                  ->onDelete('CASCADE')
+                  ->onUpdate('CASCADE');
+
+            $table->foreign('address_id')
+                  ->references('id')
+                  ->on('address')
                   ->onDelete('CASCADE')
                   ->onUpdate('CASCADE');
 

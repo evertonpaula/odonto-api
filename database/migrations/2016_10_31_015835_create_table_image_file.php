@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserImage extends Migration
+class CreateTableImageFile extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,8 @@ class CreateUserImage extends Migration
      */
     public function up()
     {
-        Schema::create( 'user_image', function( $table ){
+        Schema::create( 'file', function( $table ){
             $table->bigIncrements('id')->unsigned();
-            $table->integer('width');
-            $table->integer('height');
-            $table->bigInteger('user_id')->unsigned();
-
-            $table->foreign('user_id')
-                  ->references('id')
-                  ->on('user')
-                  ->onDelete('CASCADE')
-                  ->onUpdate('CASCADE');
-
-            $table->unique('user_id');
-        });
-
-        Schema::create( 'user_file', function( $table ){
-            $table->bigInteger('image_id')->unsigned();
             $table->string('name');
             $table->string('uuid');
             $table->string('type');
@@ -37,14 +22,21 @@ class CreateUserImage extends Migration
             $table->string('path');
             $table->timestamps();
             $table->softDeletes();
+        });
 
-            $table->foreign('image_id')
+        Schema::create( 'image', function( $table ){
+            $table->bigIncrements('id')->unsigned();
+            $table->integer('width');
+            $table->integer('height');
+            $table->bigInteger('file_id')->unsigned();
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('file_id')
                   ->references('id')
-                  ->on('user_image')
+                  ->on('file')
                   ->onDelete('CASCADE')
                   ->onUpdate('CASCADE');
-
-            $table->primary('image_id');
         });
     }
 
@@ -55,7 +47,7 @@ class CreateUserImage extends Migration
      */
     public function down()
     {
-        Schema::drop('user_image');
-        Schema::drop('user_file');
+        Schema::drop('image');
+        Schema::drop('file');
     }
 }
