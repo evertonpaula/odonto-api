@@ -76,5 +76,5 @@ class Perfil extends Model
 
     public static function boot() {
         parent::boot();
-	 }
+	}
 }

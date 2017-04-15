@@ -73,5 +73,5 @@ class User extends Model
                 $theUser->uuid = Uuid::generate(4)->string;
             }
         });
-	 }
+	}
 }

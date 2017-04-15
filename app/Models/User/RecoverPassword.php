@@ -72,5 +72,5 @@ class RecoverPassword extends Model
                 $recover->expire_at = $dt->addWeek();
             }
         });
-	 }
+	}
 }
