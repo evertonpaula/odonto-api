@@ -107,7 +107,7 @@ $app->register(\Illuminate\Mail\MailServiceProvider::class);
 
 $app->group([
     'namespace' => 'App\Http\Controllers',
-    'prefix' => 'v1'
+    'prefix'    => 'v1'
 ],
 function ($app) {
     require __DIR__.'/../routes/web.php';

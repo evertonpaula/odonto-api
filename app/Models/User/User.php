@@ -57,6 +57,10 @@ class User extends Model
         'phone'                 => 'string'
 	];
 
+    public function perfil() {
+        return $this->belongsTo('App\Models\User\Perfil', 'id', 'user_id');
+    }
+
     public function recoverPassword() {
         return $this->hasMany('App\Models\User\RecoverPassword', 'email', 'email');
     }

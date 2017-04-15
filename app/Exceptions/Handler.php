@@ -56,13 +56,13 @@ class Handler extends ExceptionHandler
 			return $this->response( 'Method Route Not found.');
 		}
 
-		return $this->response($e->getMessage());
+		return $this->response($e->getMessage(), $e->getCode());
 	}
 
 	protected function response($message, $code = 422) {
 		return new JsonResponse([
 			'data'=> null,
-			'code' => $code ?: 422,
+			'code' => $code ?:422,
 			'message' => $message
 		], $code ?: 422 );
 	}

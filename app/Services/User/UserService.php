@@ -117,4 +117,12 @@ class UserService extends Service {
         return false;
     }
 
+    public function getUser($id) {
+        $user = $this->repository
+                     ->getModel()
+                     ->with(['perfil.address.country', 'perfil.address.type', 'perfil.image.file'])
+                     ->find( (int) $id);
+
+        return $user;
+    }
 }

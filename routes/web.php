@@ -11,4 +11,11 @@
 |
 */
 
+// Open routes to login, logout, recover password and forget password //
 \App\Helpers\Utils::requireRoute('authentication.auth');
+
+// Authorization routes //
+$app->group(['middleware' => 'jwt-auth'], function ($app) {
+    // User Perfil //
+    \App\Helpers\Utils::requireRoute('user.perfil');
+});
