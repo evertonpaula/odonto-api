@@ -6,6 +6,7 @@ use Exception;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Epsoftware\Auth\Exceptions\AuthorizationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
 
@@ -19,7 +20,8 @@ class Handler extends ExceptionHandler
 	protected $dontReport = [
 		HttpException::class,
 		HttpResponseException::class,
-		MethodNotAllowedHttpException::class
+		MethodNotAllowedHttpException::class,
+		AuthorizationException::class
 	];
 
 	/**
@@ -43,6 +45,10 @@ class Handler extends ExceptionHandler
 	{
 		if ($e instanceof HttpResponseException) {
 			return $e->getResponse();
+		}
+
+		if ( $e instanceof AuthorizationException) {
+			return $this->response($e->getMessage(), $e->getCode());
 		}
 
 		if ( env('APP_ENV') != 'production' ) {

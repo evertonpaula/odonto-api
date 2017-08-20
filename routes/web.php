@@ -18,4 +18,5 @@
 $app->group(['middleware' => 'jwt-auth'], function ($app) {
     // User Perfil //
     \App\Helpers\Utils::requireRoute('user.perfil');
+    \App\Helpers\Utils::requireRoute('file.upload');
 });

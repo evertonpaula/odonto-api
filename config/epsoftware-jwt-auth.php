@@ -7,7 +7,7 @@ return [
     ],
 
     'token'  => [
-        'type' => env('AUTH_TOKEN_TYPE', 'Bearer')
+        'type' => env('AUTH_TOKEN_TYPE', 'Bearer ')
     ],
 
     'iss'    => env('AUTH_ISS', ''),
